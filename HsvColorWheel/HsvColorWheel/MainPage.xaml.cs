@@ -30,7 +30,7 @@ namespace HsvColorWheel
        
         private async void OnSave(object sender, RoutedEventArgs e)
         {
-            await HsvWheel.Save();
+            await HsvWheel.SaveSource();
         }
     }
 }
