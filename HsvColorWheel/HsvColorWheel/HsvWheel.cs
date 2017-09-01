@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Windows.Graphics.Display;
 using Windows.Graphics.Imaging;
 using Windows.Storage;
@@ -83,18 +84,18 @@ namespace HsvColorWheel
 			pixels.UpdateFromBytes();
 			source.Invalidate();
 
-			//source = source.Convolute(WriteableBitmapExtensions.KernelGaussianBlur5x5);
-			//ImgBlur.Source = blurredBitmap;
-			_imageElement.Source = source;
+            source = source.Convolute(WriteableBitmapExtensions.KernelGaussianBlur5x5);
+            //ImgBlur.Source = blurredBitmap;
+            _imageElement.Source = source;
 		}
 
-		public async void SaveSource()
+		public async Task SaveSource()
 		{
 			var source = _imageElement.Source as WriteableBitmap;
 			await source.SaveAsync(KnownFolders.PicturesLibrary, "Wheel2.png");
 		}
 
-		public async void Save()
+		public async Task Save()
 		{
 			var bitmap = new RenderTargetBitmap();
 			var file = await KnownFolders.PicturesLibrary.CreateFileAsync("Wheel.png",

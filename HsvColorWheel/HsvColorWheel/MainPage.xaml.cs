@@ -26,5 +26,11 @@ namespace HsvColorWheel
         {
             this.InitializeComponent();
         }
+
+       
+        private async void OnSave(object sender, RoutedEventArgs e)
+        {
+            await HsvWheel.Save();
+        }
     }
 }
